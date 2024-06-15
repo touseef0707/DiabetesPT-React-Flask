@@ -31,7 +31,7 @@ yarn-error.log*
 /public/favicon_io
 
 # Src files
-# /src/bootstrap.min.css
+/src/bootstrap.min.css
 
 # api files (To be hosted on different server)
 /diabetes_prediction_api/__pycache__

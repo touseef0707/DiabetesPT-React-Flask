@@ -38,7 +38,7 @@ const Predict = () => {
     } = state;
 
     try {
-      const response = await fetch('/predict', {
+      const response = await fetch('/predict_method', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

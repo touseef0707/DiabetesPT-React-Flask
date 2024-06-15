@@ -38,7 +38,8 @@ const Predict = () => {
     } = state;
 
     try {
-      const response = await fetch('/predict_method', {
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await fetch(`${apiUrl}/predict_method`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

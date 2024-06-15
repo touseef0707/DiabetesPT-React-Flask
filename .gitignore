@@ -21,3 +21,17 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# local files
+/src/Images/featurevec1
+/src/Images/featurevec2
+/src/Images/featurevec3
+
+# Public files
+/public/favicon_io
+
+# Src files
+# /src/bootstrap.min.css
+
+# api files (To be hosted on different server)
+/diabetes_prediction_api/__pycache__

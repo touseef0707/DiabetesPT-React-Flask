@@ -3,7 +3,10 @@ import { Container, Form, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+// Function Based Predic Component
 const Predict = () => {
+
+  // State for the form fields and prediction result
   const [state, setState] = useState({
     pregnancies: 3,
     glucose: 100,
@@ -17,13 +20,16 @@ const Predict = () => {
     error: null,
   });
 
+  // Hook for navigating programmatically
   const navigate = useNavigate();
 
+  // Function to handle form field changes
   const handleChange = (event) => {
     const { name, value } = event.target;
     setState((prevState) => ({ ...prevState, [name]: Number(value) }));
   };
 
+  // Function to handle form submission
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const {
@@ -36,8 +42,11 @@ const Predict = () => {
       diabetesPedigreeFunction,
       age,
     } = state;
-
+    
+    // API call to predict diabetes
     try {
+
+      // accessing API URL from .env and fetching method
       const apiUrl = process.env.REACT_APP_API_URL;
       const response = await fetch(`${apiUrl}/predict_method`, {
         method: 'POST',
@@ -60,16 +69,23 @@ const Predict = () => {
         throw new Error('Network response was not ok');
       }
 
+      // Getting the response from the API
       const data = await response.json();
       console.log(data);
+
+      // Updating the state with the prediction result
       setState({ ...state, predictionResult: data.result, error: null });
+
+      // Navigating to the results page
       navigate('/results', { state: { ...state, predictionResult: data.result } });
+      
     } catch (error) {
       console.error('There was an error!', error);
       setState({ ...state, error: error.toString() });
     }
   };
 
+  // Destructuring state values
   const {
     pregnancies,
     glucose,

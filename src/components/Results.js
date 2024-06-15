@@ -2,10 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
+// Function Based Results Component
 const Results = () => {
+
+  // Accessing the location object to get the state
   const location = useLocation();
+
+  // Destructuring the state object
   const { pregnancies, glucose, bloodPressure, skinThickness, insulin, bmi, diabetesPedigreeFunction, age, predictionResult } = location.state || {};
 
+  // Function to generate suggestions based on the prediction result
   const generateSuggestions = () => {
     if (predictionResult === 'Diabetic') {
       return [
@@ -22,6 +28,7 @@ const Results = () => {
     }
   };
 
+  // Generating suggestions based on the prediction result
   const suggestions = generateSuggestions();
 
   return (
@@ -61,7 +68,6 @@ const Results = () => {
             <div className="col-6">Age:</div>
             <div className="col-6">{age}</div>
           </div>
-          
         </div>
         <div className="col-md-6">
           <h3 className={`col-12 ${predictionResult === 'Not Diabetic' ? 'text-success' : 'text-danger'}`}>
@@ -80,6 +86,7 @@ const Results = () => {
   );
 };
 
+// Prop Types
 Results.propTypes = {
   location: PropTypes.object,
 };

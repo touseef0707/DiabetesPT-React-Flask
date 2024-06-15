@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import { Component } from 'react';
 import Results from './components/Results';
 
+// Class Based App Component
 export default class App extends Component {
 
   render() {
